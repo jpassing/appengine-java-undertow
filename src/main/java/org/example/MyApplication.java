@@ -21,8 +21,6 @@ public class MyApplication extends Application {
   }
 
   public static void main(String[] args) {
-    var server = new UndertowJaxrsServer();
-
     //
     // Configure deployment.
     //
@@ -30,6 +28,7 @@ public class MyApplication extends Application {
     deployment.setApplicationClass(MyApplication.class.getName());
     deployment.setInjectorFactoryClass("org.jboss.resteasy.cdi.CdiInjectorFactory"); // set CDI injector factory
 
+    var server = new UndertowJaxrsServer();
     var deploymentInfo = server.undertowDeployment(deployment, "/");
     deploymentInfo.setClassLoader(Application.class.getClassLoader());
     deploymentInfo.setDeploymentName("Default");
